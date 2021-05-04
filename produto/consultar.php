@@ -11,8 +11,8 @@ if ($result) {
     http_response_code(200);
     echo json_encode($r, JSON_UNESCAPED_UNICODE);
 } else {
-    http_response_code(500);
-    echo json_encode(["mensagem" => "Erro SQL: " . $conexao->error]);
+    header("HTTP/1.1 500 Erro no SQL");
+    echo json_encode(["erro" => "Erro SQL: " . $conexao->error]);
 }
 ?>
  
